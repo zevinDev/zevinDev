@@ -1,10 +1,10 @@
 
 # Hi 👋 I am Zevin! 
-I am a software engineer at [Elucidata](https://elucidata.io/), where I specialize in solving complex biomedical data problems using cutting-edge technology and tools.
+I am a learning to program at [Casteel High School](https://www.cusd80.com/casteelhigh/), where I specialize in frontend development and react.
 
 - 🌐 Visit my [portfolio website](https://pr2tik1.github.io/) for more information and to get in touch.
-- 👋 Check out my personal [blog](https://pr2tik1.github.io/blog/) for articles and insights.
-- ✍️ Follow me on [Medium](https://pr2tik1.medium.com/) for more written content.
+- 👋 Check out my pixel art [game](https://realziez.github.io/FBLA-Game/) I made.
+- ✍️ Check out my [LinkTree](https://pr2tik1.medium.com/), and drop a follow on my socials
 
 ---
 
@@ -17,7 +17,7 @@ I am a software engineer at [Elucidata](https://elucidata.io/), where I speciali
   <a href="https:/www.java.com/" target="_blank">
     <img src="https://img.shields.io/badge/Java-%2314354C.svg?style=flat-square&logo=coffeescript&logoColor=white" alt="Python">
   </a>
-  <a href="https://www.r-project.org/" target="_blank">
+  <a href="https://nodejs.org/en" target="_blank">
     <img src="https://img.shields.io/badge/NodeJS-%23276DC3.svg?style=flat-square&logo=nodedotjs&logoColor=white" alt="R">
   </a>
   <a href="https://www.javascript.com/" target="_blank">
@@ -35,7 +35,7 @@ I am a software engineer at [Elucidata](https://elucidata.io/), where I speciali
   <a href="https://github.com/features/actions" target="_blank">
     <img src="https://img.shields.io/badge/GitHub%20Actions-%232671E5.svg?style=flat-square&logo=github-actions&logoColor=white" alt="GitHub Actions">
   </a>
-  <a href="https://aws.amazon.com/" target="_blank">
-    <img src="https://img.shields.io/badge/AWS-%23FF9900.svg?style=flat-square&logo=amazon-aws&logoColor=white" alt="AWS">
+  <a href="https://www.mongodb.com/" target="_blank">
+    <img src="https://img.shields.io/badge/MongoDB-%23FF9900.svg?style=flat-square&logo=mongodb&logoColor=white" alt="MONGODB">
   </a>
 </p>
