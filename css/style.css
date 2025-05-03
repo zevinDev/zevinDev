@@ -1429,3 +1429,368 @@ section {
     flex-direction: column;
   }
 }
+
+/* Responsive Design - These will be added at the end of the file */
+/* Base media queries are already in the file, we'll expand them */
+
+@media screen and (max-width: 768px) {
+  :root {
+    --section-padding: 4rem 1.5rem;
+  }
+  
+  .about-content {
+    flex-direction: column;
+    text-align: center;
+    gap: 2rem;
+  }
+  
+  .projects-grid {
+    grid-template-columns: 1fr;
+  }
+  
+  .contact-container {
+    flex-direction: column;
+    align-items: center;
+  }
+  
+  .terminal-container {
+    width: 95%;
+  }
+  
+  h1, h2, h3, h4, h5, h6 {
+    font-size: calc(1em + 0.5vw);
+  }
+  
+  .glitch {
+    letter-spacing: 3px;
+  }
+  
+  .hero-section {
+    padding: var(--section-padding);
+    height: 100svh; /* Use small viewport height for mobile */
+  }
+  
+  .typing-text .name,
+  .typing-text .skills {
+    font-size: 1.3rem;
+  }
+  
+  .social-links {
+    gap: 1rem;
+  }
+  
+  /* Adjust terminal content for tablets */
+  .terminal-content {
+    padding: 15px;
+    font-size: 1.1rem;
+  }
+  
+  /* Make project cards more compact on tablets */
+  .project-card {
+    padding: 1.2rem;
+  }
+  
+  .project-image {
+    height: 150px;
+  }
+  
+  /* Reduce footer padding */
+  .cyber-footer {
+    padding: 1.5rem;
+  }
+  
+  /* Adjust particles and background effects for better mobile performance */
+  .matrix-column {
+    font-size: 1.2rem;
+  }
+}
+
+/* Smaller tablets and large phones */
+@media screen and (max-width: 600px) {
+  :root {
+    --section-padding: 3rem 1rem;
+  }
+  
+  .terminal-container {
+    width: 98%;
+  }
+  
+  .terminal-content {
+    padding: 12px;
+    font-size: 1rem;
+  }
+  
+  .typing-text .name,
+  .typing-text .skills {
+    font-size: 1.2rem;
+    padding-left: 10px;
+  }
+  
+  .profile-container {
+    width: 200px;
+    height: 200px;
+  }
+  
+  .about-text {
+    padding: 0 15px;
+  }
+  
+  .project-card {
+    margin-bottom: 1.5rem;
+  }
+  
+  .tech-stack {
+    flex-wrap: wrap;
+  }
+  
+  .tech-tag {
+    font-size: 0.7rem;
+    padding: 0.15rem 0.4rem;
+  }
+  
+  .view-project {
+    width: 100%;
+    text-align: center;
+  }
+  
+  .cyber-button {
+    padding: 0.4rem 1.2rem;
+    font-size: 1rem;
+  }
+  
+  /* Reduce glitch effect on small screens for better performance */
+  .glitch::before,
+  .glitch::after {
+    animation-duration: 4s;
+  }
+  
+  /* Reduce matrix rain columns for better performance */
+  .matrix-column {
+    font-size: 1rem;
+  }
+}
+
+/* Mobile phones */
+@media screen and (max-width: 480px) {
+  :root {
+    --section-padding: 2.5rem 0.8rem;
+  }
+  
+  .section-header h2 {
+    font-size: 1.2rem;
+  }
+  
+  .terminal-container {
+    width: 100%;
+    margin: 0 10px;
+  }
+  
+  .terminal-content {
+    padding: 10px;
+    font-size: 0.9rem;
+  }
+  
+  .terminal-button {
+    width: 10px;
+    height: 10px;
+    margin-right: 4px;
+  }
+  
+  .typing-text .name,
+  .typing-text .skills {
+    font-size: 1.1rem;
+    padding-left: 5px;
+  }
+  
+  .profile-container {
+    width: 150px;
+    height: 150px;
+  }
+  
+  .profile-corners span {
+    width: 15px;
+    height: 15px;
+  }
+  
+  .about-text {
+    font-size: 0.9rem;
+  }
+  
+  .projects-grid {
+    gap: 1.5rem;
+  }
+  
+  .project-card {
+    padding: 1rem;
+  }
+  
+  .project-image {
+    height: 120px;
+  }
+  
+  .card-header h3 {
+    font-size: 1rem;
+  }
+  
+  .project-description {
+    font-size: 0.9rem;
+    margin-bottom: 1rem;
+  }
+  
+  .tech-stack {
+    gap: 0.3rem;
+  }
+  
+  .tech-tag {
+    font-size: 0.65rem;
+    padding: 0.1rem 0.3rem;
+  }
+  
+  .contact-form,
+  .contact-info {
+    width: 100%;
+  }
+  
+  .form-group {
+    margin-bottom: 1.2rem;
+  }
+  
+  .cyber-label {
+    font-size: 1rem;
+  }
+  
+  .cyber-input,
+  .cyber-textarea {
+    padding: 0.6rem 0.8rem;
+  }
+  
+  .submit-button {
+    width: 100%;
+    padding: 0.6rem;
+  }
+  
+  .scroll-to-top {
+    bottom: 20px;
+    right: 20px;
+    width: 35px;
+    height: 35px;
+  }
+  
+  /* Further optimize background effects for mobile */
+  .digital-node {
+    width: 4px;
+    height: 4px;
+  }
+  
+  .particle {
+    opacity: 0.5;
+  }
+  
+  /* Reduce the number of visual effects on mobile for better performance */
+  .warp-line {
+    opacity: 0.2;
+  }
+  
+  /* Make sure the contact section is well formatted */
+  .contact-section .section-header {
+    margin-bottom: 1.5rem;
+  }
+  
+  .contact-info h3 {
+    font-size: 1.1rem;
+  }
+  
+  .social-links {
+    gap: 0.8rem;
+  }
+  
+  .social-link {
+    width: 40px;
+    height: 40px;
+  }
+  
+  /* Make footer more compact */
+  .cyber-footer {
+    padding: 1.2rem 0.8rem;
+    font-size: 0.8rem;
+  }
+  
+  .footer-text {
+    font-size: 0.8rem;
+  }
+}
+
+/* Handle orientation changes for mobile devices */
+@media screen and (max-height: 500px) and (orientation: landscape) {
+  .hero-section {
+    height: auto;
+    min-height: 100vh;
+    padding: 2rem 1rem;
+  }
+  
+  .terminal-container {
+    margin-top: 2rem;
+    margin-bottom: 2rem;
+  }
+  
+  .about-content {
+    flex-direction: row;
+    flex-wrap: wrap;
+    gap: 1rem;
+  }
+  
+  .profile-container {
+    width: 130px;
+    height: 130px;
+  }
+  
+  .about-text {
+    max-width: 60%;
+    font-size: 0.9rem;
+  }
+  
+  .section-header h2 {
+    margin-top: 1rem;
+  }
+}
+
+/* Touch-friendly improvements */
+@media (hover: none) and (pointer: coarse) {
+  .cyber-button {
+    padding: 0.7rem 1.5rem; /* Larger touch target */
+  }
+  
+  .cyber-button::before,
+  .cyber-button::after {
+    display: none; /* Simplify animations for touch devices */
+  }
+  
+  .social-link {
+    padding: 5px; /* Larger touch target */
+  }
+  
+  .scroll-to-top {
+    transform: scale(1.2); /* Larger touch target */
+  }
+  
+  /* Make input fields larger for touch */
+  .cyber-input,
+  .cyber-textarea {
+    padding: 0.8rem 1rem;
+  }
+  
+  .submit-button {
+    padding: 0.8rem 2rem;
+  }
+}
+
+/* High DPI screens (retina displays) */
+@media (-webkit-min-device-pixel-ratio: 2), (min-resolution: 192dpi) {
+  .noise-overlay {
+    opacity: 0.03; /* Reduce noise on high DPI screens */
+  }
+  
+  .scanline {
+    height: 2px; /* Thinner scanline on high DPI screens */
+  }
+}
