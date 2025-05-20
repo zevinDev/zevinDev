@@ -1,11 +1,10 @@
 document.addEventListener('DOMContentLoaded', function() {
     document.getElementById('current-year').textContent = new Date().getFullYear();
+    fixScrollingIssues();
     initTerminalTyping();
     createBackgroundEffects();
     initEnhancedScrollAnimations();
     setupContactForm();
-    addScrollToTopButton();
-    fixScrollingIssues();
 });
 
 function initTerminalTyping() {
@@ -38,7 +37,6 @@ function initTerminalTyping() {
 function createBackgroundEffects() {
     createMatrixRain();
     createParticles();
-    createWarpSpeedEffect();
     createDigitalCircuit();
     createScrollProgressBar();
 }
@@ -61,7 +59,7 @@ function createMatrixRain() {
         const column = document.createElement('div');
         column.className = 'matrix-column';
         column.style.left = `${i * 20 + Math.random() * 10}px`;
-        
+        column.style.opacity = 0
         const duration = Math.random() * 5 + 3;
         column.style.animationDuration = `${duration}s`;
         
@@ -101,7 +99,6 @@ function createMatrixRain() {
                     charSpan.textContent = characters[charIndex];
                     newColumn.appendChild(charSpan);
                 }
-                
                 matrixContainer.appendChild(newColumn);
             }
         }, (duration + delay) * 1000);
@@ -204,16 +201,6 @@ function createSingleParticle(container) {
             createSingleParticle(container);
         }
     }, (duration + delay) * 1000);
-}
-
-function createWarpSpeedEffect() {
-    const warpContainer = document.createElement('div');
-    warpContainer.className = 'warp-speed';
-    document.body.appendChild(warpContainer);
-    
-    for (let i = 0; i < 100; i++) {
-        createWarpLine(warpContainer);
-    }
 }
 
 function createWarpLine(container) {
@@ -394,7 +381,7 @@ function createScrollProgressBar() {
             const scrolled = (window.scrollY / windowHeight) * 100;
             progressBar.style.width = `${scrolled}%`;
         });
-    }, 50), { passive: true });
+    }, 15), { passive: true });
 }
 
 function initEnhancedScrollAnimations() {
@@ -405,8 +392,6 @@ function initEnhancedScrollAnimations() {
     
     createScrollIndicator();
     setupRevealObserver();
-    addSpecialAnimations();
-    setupSmoothScrollNavigation();
 }
 
 function createScrollIndicator() {
@@ -434,7 +419,7 @@ function setupRevealObserver() {
             if (entry.isIntersecting) {
                 entry.target.classList.add('active');
                 
-                const elements = entry.target.querySelectorAll('.project-card, .form-group, h2, p');
+                const elements = entry.target.querySelectorAll('.form-group, h2, p');
                 elements.forEach((el, index) => {
                     setTimeout(() => {
                         el.classList.add('fade-in-up');
@@ -450,141 +435,6 @@ function setupRevealObserver() {
     document.querySelectorAll('.reveal-section').forEach(section => {
         observer.observe(section);
     });
-}
-
-function addSpecialAnimations() {
-    document.querySelectorAll('.project-card').forEach((card, index) => {
-        if (index % 2 === 0) {
-            card.classList.add('slide-in-left');
-        } else {
-            card.classList.add('slide-in-right');
-        }
-    });
-    
-    document.querySelectorAll('.cyber-button').forEach(button => {
-        button.addEventListener('mouseover', function() {
-            this.style.animation = 'pulse 0.5s';
-        });
-        
-        button.addEventListener('animationend', function() {
-            this.style.animation = '';
-        });
-    });
-    
-    document.querySelectorAll('.glitch').forEach(element => {
-        element.addEventListener('mouseover', function() {
-            this.style.animation = 'glitch-1 0.3s infinite';
-        });
-        
-        element.addEventListener('mouseleave', function() {
-            this.style.animation = '';
-        });
-    });
-}
-
-function setupSmoothScrollNavigation() {
-    const scrollManager = {
-        isScrolling: false,
-        
-        scrollToPosition: function(position, callback) {
-            this.isScrolling = true;
-            
-            const flash = document.createElement('div');
-            flash.style.position = 'fixed';
-            flash.style.top = '0';
-            flash.style.left = '0';
-            flash.style.width = '100%';
-            flash.style.height = '100%';
-            flash.style.backgroundColor = 'var(--primary)';
-            flash.style.opacity = '0';
-            flash.style.zIndex = '1000';
-            flash.style.pointerEvents = 'none';
-            document.body.appendChild(flash);
-            
-            flash.animate([
-                { opacity: 0 },
-                { opacity: 0.2 },
-                { opacity: 0 }
-            ], {
-                duration: 600,
-                easing: 'cubic-bezier(0.17, 0.67, 0.83, 0.67)'
-            });
-            
-            window.scrollTo({
-                top: position,
-                behavior: 'smooth'
-            });
-            
-            if (position === 0) {
-                setTimeout(() => {
-                    window.scrollTo({
-                        top: 0,
-                        behavior: 'auto'
-                    });
-                    setTimeout(() => {
-                        if (window.scrollY > 0) {
-                            window.scrollTo(0, 0);
-                        }
-                    }, 50);
-                }, 100);
-            }
-            
-            setTimeout(() => {
-                this.isScrolling = false;
-                if (typeof callback === 'function') callback();
-                flash.remove();
-            }, 800);
-        },
-        
-        scrollToTop: function(callback) {
-            this.scrollToPosition(0, callback);
-        }
-    };
-    
-    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-        anchor.addEventListener('click', function(e) {
-            e.preventDefault();
-            
-            const targetId = this.getAttribute('href');
-            const targetElement = document.querySelector(targetId);
-            
-            if (!targetElement) return;
-            
-            if (targetId === '#home') {
-                scrollManager.scrollToTop();
-            } else {
-                const headerHeight = document.querySelector('header').offsetHeight;
-                const elementPosition = Math.floor(
-                    targetElement.getBoundingClientRect().top + window.pageYOffset - headerHeight
-                );
-                scrollManager.scrollToPosition(elementPosition);
-            }
-        });
-    });
-    
-    document.addEventListener('keydown', function(e) {
-        if (e.key === 'Home') {
-            e.preventDefault();
-            scrollManager.scrollToTop();
-        }
-    });
-    
-    if (window.location.hash) {
-        setTimeout(() => {
-            const targetId = window.location.hash;
-            const targetElement = document.querySelector(targetId);
-            
-            if (targetElement) {
-                const headerHeight = document.querySelector('header').offsetHeight;
-                const elementPosition = Math.floor(
-                    targetElement.getBoundingClientRect().top + window.pageYOffset - headerHeight
-                );
-                scrollManager.scrollToPosition(elementPosition);
-            }
-        }, 300);
-    }
-    
-    return scrollManager;
 }
 
 function setupContactForm() {
@@ -701,7 +551,7 @@ function setupContactForm() {
                     keyFlash.style.bottom = '0';
                     keyFlash.style.left = '0';
                     keyFlash.style.right = '0';
-                    keyFlash.style.height = '2px';
+                    keyFlash.style.height = '0px';
                     keyFlash.style.backgroundColor = 'var(--primary)';
                     keyFlash.style.opacity = '0.7';
                     keyFlash.style.zIndex = '1';
@@ -775,33 +625,6 @@ document.addEventListener('mousemove', (e) => {
     }
 });
 
-function addScrollToTopButton() {
-    const scrollToTopBtn = document.createElement('div');
-    scrollToTopBtn.className = 'scroll-to-top';
-    document.body.appendChild(scrollToTopBtn);
-    
-    window.addEventListener('scroll', function() {
-        if (window.scrollY > window.innerHeight / 2) {
-            scrollToTopBtn.classList.add('visible');
-        } else {
-            scrollToTopBtn.classList.remove('visible');
-        }
-    });
-    
-    scrollToTopBtn.addEventListener('click', function() {
-        event.preventDefault();
-        event.stopPropagation();
-        
-        document.body.style.scrollSnapType = 'none';
-        
-        window.scrollTo(0, 0);
-        
-        setTimeout(() => {
-            document.body.style.scrollSnapType = 'y proximity';
-        }, 1000);
-    });
-}
-
 function fixScrollingIssues() {
     document.body.style.willChange = 'scroll-position';
     document.documentElement.style.willChange = 'scroll-position';
@@ -863,24 +686,6 @@ function fixScrollingIssues() {
     }, 100);
     
     document.addEventListener('touchmove', throttledTouchHandler, { passive: true });
-    
-    const scrollToTopBtn = document.querySelector('.scroll-to-top');
-    if (scrollToTopBtn) {
-        scrollToTopBtn.addEventListener('click', function(event) {
-            event.preventDefault();
-            event.stopPropagation();
-            
-            document.body.style.scrollBehavior = 'auto';
-            
-            requestAnimationFrame(() => {
-                window.scrollTo(0, 0);
-                
-                setTimeout(() => {
-                    document.body.style.scrollBehavior = 'smooth';
-                }, 200);
-            });
-        });
-    }
     
     const throttledWheelHandler = throttle(function(e) {
         if (window.scrollY < 50 && e.deltaY < 0) {
